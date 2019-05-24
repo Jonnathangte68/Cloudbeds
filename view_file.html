@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Senior Backend Engineer Test Task</title>
+
+	<style type="text/css">
+		.border-table {
+			border-spacing: 0px;
+			width: 58%;
+		}
+		.border-table tr td {
+			border: 1px solid black;
+			padding:5px;
+		}
+		.center-titles {
+			background: black;
+		    color: white;
+		    font-weight: bold;
+		    text-align: center;
+		}
+	</style>
+</head>
+<body onload="getTableInfo();" style="padding-left:25%;">
+
+	<h3>Jonnathan Guarate - Senior Backend Engineer Test Task Answer</h3>
+	<br>
+	<br>
+
+
+	<table>
+		<tr>
+			
+			<td style="border: 1px solid #ddd;text-align: center;">
+
+				<form action="/IntervalProject/Main.php" method="POST">
+						<p style="text-decoration: underline;font-weight: bold;text-align: center;">ADD NEW TASK:</p>
+						<br>
+						<table>
+							<tr><td style="width: 100px;">Start Date: </td><td style="width: 400px;"><input type="text" name="start_date" id="start_date"></td></tr>
+							<tr><td style="width: 100px;">End Date: </td><td style="width: 400px;"><input type="text" name="end_date" id="end_date"></td></tr>
+							<tr><td style="width: 100px;">Price: </td><td style="width: 400px;"><input type="text" name="price" id="price"></td></tr>
+						</table>
+						<br>
+						<br>
+						<button name="add_new_job" type="submit">Add Interval!</button>
+					</form>
+				
+
+			</td>
+			<td style="border: 1px solid #ddd;border: 1px solid #ddd;width: 35%; text-align: center;">
+				
+				<form action="/IntervalProject/Main.php" method="POST">
+					<p style="text-decoration: underline;"><b>CLEAR DB</b></p>
+					<br>
+					<br>
+					<button type="submit" name="clearDB" value="clearDB" style="margin-top: 34%;">Clear!</button>
+				</form>
+
+			</td>
+
+		</tr>
+	</table>
+
+	<br><br>
+
+
+	<br>
+	<br>
+	<table class="border-table">
+		<thead>
+			<tr class="center-titles">
+				<td>STEP</td>
+				<td>OPERATION</td>
+				<td>RESULT</td>
+			</tr>
+		</thead>
+		<tbody id="tcontent">
+			
+		</tbody>
+	</table>
+
+
+	<script type="text/javascript">
+		
+		function getTableInfo() {
+			let xhttp = new XMLHttpRequest();
+			xhttp.open("GET", window.location+"?get_all_jobs=1", true);
+			xhttp.send();
+			xhttp.onreadystatechange = function() {
+			  if (this.readyState == 4 && this.status == 200) {
+			    	let responseData = JSON.parse(this.responseText);
+			    	let result = "";
+			    	for (let i = 0 ; i <= responseData.length - 1; i++) {
+			    		let Job = responseData[i];
+			    		if (Job) {
+			    			try {
+								let row = document.getElementById('tcontent').insertRow(i);
+								let cell1 = row.insertCell(0);
+								let cell2 = row.insertCell(1);
+								let cell3 = row.insertCell(2);
+								cell1.innerHTML = Job.step;
+								cell2.innerHTML = Job.operation;
+								cell3.innerHTML = Job.result;
+							}
+					    	catch(err) {
+					    		console.log("ERROR CODE: 10G1");
+					    	}
+			    		}
+			    	}
+			  }
+			};
+		}
+
+	</script>
+
+
+</body>
+</html>
