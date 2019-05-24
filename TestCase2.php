@@ -16,46 +16,60 @@ class TestCase1 {
 	   	$job2 = new Job(5, 20, 15);
 	   	$r->addElement($job2);
 	   	$ctrl = 0;
-	   	foreach ($r->getResult() as $result1) {
-	   		foreach ($result1 as $result2) {
+	   	foreach ($r->getResult() as $result1) 
+	   	{
+	   		foreach ($result1 as $result2) 
+	   		{
 	   			
-	   			if ($ctrl==0) {
-	   				if($result2->getStartDate()===1) {
+	   			if ($ctrl==0) 
+	   			{
+	   				if($result2->getStartDate()===1) 
+	   				{
 				   		echo "<br><p style='color:green;'>TEST VALIDATION SUCCESS 1/3 VERIFIED</p><br>";
 				   	}else {
 				   		echo "<br><p style='color:red;'>TEST VALIDATION ERROR 1/3 FAILS</p><br>";
 				   	}
-				   	if($result2->getEndDate()===10) {
+				   	if($result2->getEndDate()===10) 
+				   	{
 						echo "<br><p style='color:green;'>TEST VALIDATION SUCCESS 2/3 VERIFIED</p><br>";
 				   	}else {
 				   		echo "<br><p style='color:red;'>TEST VALIDATION ERROR 2/3 FAILS</p><br>";
 				   	}
-				   	if($result2->getPrice()===15) {
+				   	if($result2->getPrice()===15) 
+				   	{
 						echo "<br><p style='color:green;'>TEST VALIDATION SUCCESS 3/3 VERIFIED</p><br>";
 				   	}else {
 				   		echo "<br><p style='color:red;'>TEST VALIDATION ERROR 3/3 FAILS</p><br>";	   		
 				   	}
 	   			}
 
-			   	if ($ctrl==1) {
-			   		if($result2->getStartDate()===1) {
+			   	if ($ctrl==1) 
+			   	{
+			   		if($result2->getStartDate()===1) 
+			   		{
 				   		echo "<br><p style='color:green;'>TEST VALIDATION SUCCESS 4/3 VERIFIED</p><br>";
-				   	}else {
+				   	}else 
+				   	{
 				   		echo "<br><p style='color:red;'>TEST VALIDATION ERROR 4/3 FAILS</p><br>";
 				   	}
-				   	if($result2->getEndDate()===20) {
+				   	if($result2->getEndDate()===20) 
+				   	{
 						echo "<br><p style='color:green;'>TEST VALIDATION SUCCESS 5/3 VERIFIED</p><br>";
-				   	}else {
+				   	}else 
+				   	{
 				   		echo "<br><p style='color:red;'>TEST VALIDATION ERROR 5/3 FAILS</p><br>";
 				   	}
-				   	if($result2->getPrice()===15) {
+				   	if($result2->getPrice()===15) 
+				   	{
 						echo "<br><p style='color:green;'>TEST VALIDATION SUCCESS 6/3 VERIFIED</p><br>";
-				   	}else {
+				   	}else 
+				   	{
 				   		echo "<br><p style='color:red;'>TEST VALIDATION ERROR 6/3 FAILS</p><br>";	   		
 				   	}	
 			   	}
 
-			   	if ($ctrl==1) {
+			   	if ($ctrl==1) 
+			   	{
 			   		echo "<br><p style='color:blue'>TEST COMPLETED:</p><br>";	
 				   	print_r($result2);
 				   	echo "<br>";

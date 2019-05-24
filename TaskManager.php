@@ -20,7 +20,8 @@ class TaskManager implements iIntervalRest
 		$db= new Database();
 		$objFormatter= new Formatter();
 		$output = array();
-		foreach ($db->getIntervals() as $interval) {
+		foreach ($db->getIntervals() as $interval) 
+		{
 			$job = new Job($interval["start_date"], $interval["end_date"], $interval["price"]);
 			$r->addElement($job);
 			array_push($output, array(

@@ -14,23 +14,32 @@ class TestCase1 {
 	   	$job = new Job(1, 10, 15);
 	   	$r->addElement($job);
 
-	   	foreach ($r->getResult() as $result1) {
-	   		foreach ($result1 as $result2) {
+	   	foreach ($r->getResult() as $result1) 
+	   	{
+	   		
+	   		foreach ($result1 as $result2) 
+	   		{
 	   			
 
-	   			if($result2->getStartDate()===1) {
+	   			if($result2->getStartDate()===1) 
+	   			{
 			   		echo "<br><p style='color:green;'>TEST VALIDATION SUCCESS 1/3 VERIFIED</p><br>";
-			   	}else {
+			   	}else 
+			   	{
 			   		echo "<br><p style='color:red;'>TEST VALIDATION ERROR 1/3 FAILS</p><br>";
 			   	}
-			   	if($result2->getEndDate()===10) {
+			   	if($result2->getEndDate()===10) 
+			   	{
 					echo "<br><p style='color:green;'>TEST VALIDATION SUCCESS 2/3 VERIFIED</p><br>";
-			   	}else {
+			   	}else 
+			   	{
 			   		echo "<br><p style='color:red;'>TEST VALIDATION ERROR 2/3 FAILS</p><br>";
 			   	}
-			   	if($result2->getPrice()===15) {
+			   	if($result2->getPrice()===15) 
+			   	{
 					echo "<br><p style='color:green;'>TEST VALIDATION SUCCESS 3/3 VERIFIED</p><br>";
-			   	}else {
+			   	}else 
+			   	{
 			   		echo "<br><p style='color:red;'>TEST VALIDATION ERROR 3/3 FAILS</p><br>";	   		
 			   	}
 

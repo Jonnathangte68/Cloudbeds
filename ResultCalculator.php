@@ -11,16 +11,20 @@ class ResultCalculator
 
 	protected function reLoopAndMerge($arrTemp) {
 	    $tempInt = new Job(NULL, NULL, NULL);
-            for ( $p = 0 ; $p < count($arrTemp); $p++) { 
+            for ( $p = 0 ; $p < count($arrTemp); $p++) 
+            { 
 
-                if($p===0) {
+                if($p===0) 
+                {
                 	$tempInt->setStartDate($arrTemp[$p]->getStartDate()); 
                 	$tempInt->setEndDate($arrTemp[$p]->getEndDate());
                 	$tempInt->setPrice($arrTemp[$p]->getPrice());
                 }
 
-                if (($p+1) < count($arrTemp)) {
-                    if(($arrTemp[$p]->getEndDate() + 1) === $arrTemp[($p+1)]->getStartDate()) { 
+                if (($p+1) < count($arrTemp)) 
+                {
+                    if(($arrTemp[$p]->getEndDate() + 1) === $arrTemp[($p+1)]->getStartDate()) 
+                    { 
 
                         $tempInt->setStartDate(($arrTemp[$p]->getStartDate() < $tempInt->getStartDate()) ? $arrTemp[$p]->getStartDate() : $tempInt->getStartDate());
                         $tempInt->setEndDate($arrTemp[($p+1)]->getEndDate());
@@ -42,30 +46,38 @@ class ResultCalculator
 		$ArregloR = array();
 	    // Instance de Job Factory
 	    $JobFactory = new JobFactory();
-	    for($intervalo = 0 ; $intervalo < count($ArregloI) ; $intervalo++) {
+	    for($intervalo = 0 ; $intervalo < count($ArregloI) ; $intervalo++) 
+	    {
 	        if($intervalo===0) {
 	            $arregloDeIntervalos = array();
 	            array_push($arregloDeIntervalos, $ArregloI[$intervalo]);
 	            array_push($ArregloR, $arregloDeIntervalos);
 	            continue;
 	        }
-	        if(count($ArregloR) >= 1) {
+	        if(count($ArregloR) >= 1) 
+	        {
 	            $lastElmentOnArray = end($ArregloR);
 	            $arr = array();
-	            for($resultado = 0 ; $resultado < count($lastElmentOnArray) ; $resultado++ ) {
-	                if($ArregloI[$intervalo]->getStartDate() < $lastElmentOnArray[$resultado]->getEndDate()) {
-	                    if($lastElmentOnArray[$resultado]->getPrice() === $ArregloI[$intervalo]->getPrice()) {
+	            for($resultado = 0 ; $resultado < count($lastElmentOnArray) ; $resultado++ ) 
+	            {
+	                if($ArregloI[$intervalo]->getStartDate() < $lastElmentOnArray[$resultado]->getEndDate()) 
+	                {
+	                    if($lastElmentOnArray[$resultado]->getPrice() === $ArregloI[$intervalo]->getPrice()) 
+	                    {
 	                            $newJob = $JobFactory->createNewJob(
 	                                $lastElmentOnArray[$resultado]->getStartDate(),
 	                                $ArregloI[$intervalo]->getEndDate(),
 	                                $lastElmentOnArray[$resultado]->getPrice()
 	                            ); 
-	                            if($lastElmentOnArray[$resultado]->getStartDate() < $ArregloI[$intervalo]->getEndDate()) {
+	                            if($lastElmentOnArray[$resultado]->getStartDate() < $ArregloI[$intervalo]->getEndDate()) 
+	                            {
 	                                array_push($arr, $newJob);
 	                            }
 	                        }
-	                    else {
-	                        if(($ArregloI[$intervalo]->getStartDate()-1) >= $lastElmentOnArray[$resultado]->getStartDate()) {
+	                    else 
+	                    {
+	                        if(($ArregloI[$intervalo]->getStartDate()-1) >= $lastElmentOnArray[$resultado]->getStartDate()) 
+	                        {
 	                            $newJob = $JobFactory->createNewJob(
 	                                $lastElmentOnArray[$resultado]->getStartDate(),
 	                                $ArregloI[$intervalo]->getStartDate()-1,
@@ -74,7 +86,8 @@ class ResultCalculator
 	                            array_push($arr, $newJob);
 	                            array_push($arr, $ArregloI[$intervalo]);
 	                        }
-	                        if($lastElmentOnArray[$resultado]->getEndDate() > ($ArregloI[$intervalo]->getEndDate() + 1)) {
+	                        if($lastElmentOnArray[$resultado]->getEndDate() > ($ArregloI[$intervalo]->getEndDate() + 1)) 
+	                        {
 	                            $newJob = $JobFactory->createNewJob(
 	                                $ArregloI[$intervalo]->getEndDate()+1,
 	                                $lastElmentOnArray[$resultado]->getEndDate(),
@@ -83,42 +96,56 @@ class ResultCalculator
 	                            array_push($arr, $newJob);
 	                        }
 	                    }
-	                } else {
-	                    if($ArregloI[$intervalo]->getStartDate() > $lastElmentOnArray[$resultado]->getEndDate()) {  
-	                        if($ArregloI[$intervalo]->getPrice() === $lastElmentOnArray[$resultado]->getPrice()) {
-	                            if ($lastElmentOnArray[$resultado]->getEndDate()+1==$ArregloI[$intervalo]->getStartDate()) {
+	                } 
+	                else 
+	                {
+	                    if($ArregloI[$intervalo]->getStartDate() > $lastElmentOnArray[$resultado]->getEndDate()) 
+	                    {  
+	                        if($ArregloI[$intervalo]->getPrice() === $lastElmentOnArray[$resultado]->getPrice()) 
+	                        {
+	                            if ($lastElmentOnArray[$resultado]->getEndDate()+1==$ArregloI[$intervalo]->getStartDate()) 
+	                            {
 	                                $new_Job = $JobFactory->createNewJob(
 	                                    $lastElmentOnArray[$resultado]->getStartDate(), 
 	                                    $ArregloI[$intervalo]->getEndDate(),
 	                                    $lastElmentOnArray[$resultado]->getPrice()
 	                                );
 	                                array_push($arr, $new_Job);
-	                            }else {
+	                            }
+	                            else 
+	                            {
 	                                array_push($arr, $lastElmentOnArray[$resultado]);
 	                                array_push($arr, $ArregloI[$intervalo]);
 	                            }
-	                        }else { 
+	                        }else 
+	                        { 
 	                            array_push($arr, $lastElmentOnArray[$resultado]);            
 	                        }
 	                    }
-	                    if( (($resultado+1) > count($lastElmentOnArray)) && !empty($arr)) { 
+	                    if( (($resultado+1) > count($lastElmentOnArray)) && !empty($arr)) 
+	                    { 
 	                        array_push($ArregloR, $arr);   
 	                    }
 	                } 
 	        }
-	        if (!empty($arr)) {
+	        if (!empty($arr)) 
+	        {
 	            array_push($ArregloR, $arr);   
-	        }else {
+	        }else 
+	        {
 	            $arrTemp = array();
-	            for($resultado = 0 ; $resultado < count($lastElmentOnArray) ; $resultado++ ) {
-	                if (($ArregloI[$intervalo]->getStartDate() <= $lastElmentOnArray[$resultado]->getStartDate()) && $ArregloI[$intervalo]->getEndDate() <= $lastElmentOnArray[$resultado]->getEndDate()) {
+	            for($resultado = 0 ; $resultado < count($lastElmentOnArray) ; $resultado++ ) 
+	            {
+	                if (($ArregloI[$intervalo]->getStartDate() <= $lastElmentOnArray[$resultado]->getStartDate()) && $ArregloI[$intervalo]->getEndDate() <= $lastElmentOnArray[$resultado]->getEndDate()) 
+	                {
 	                    $new_Job = $JobFactory->createNewJob( 
 	                        $lastElmentOnArray[$resultado]->getStartDate(), 
 	                        $lastElmentOnArray[$resultado]->getEndDate(), 
 	                        $ArregloI[$intervalo]->getPrice()
 	                    );
 	                    array_push($arrTemp, $new_Job);
-	                }else {
+	                }else 
+	                {
 	                    array_push($arrTemp, $lastElmentOnArray[$resultado]);
 	                }
 	            }
