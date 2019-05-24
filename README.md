@@ -11,7 +11,14 @@ then access by path (URL):
 
 (webserver or localhost) /IntervalProject/Main.php
 
-# TEST CASES 
+# AUTOMATED TEST
+
+-*-         Run on a page or by console the following test cases        -*-
+
+(webserver or localhost) /IntervalProject/TestCase1.php
+(webserver or localhost) /IntervalProject/TestCase2.php
+
+# TEST CASES EXCERCISE REFERENCE
 
 CASE 1:
 
